@@ -1,0 +1,29 @@
+runmode: debug               # 开发模式, debug, release, test
+addr: :8080                  # HTTP绑定端口
+jwt_secret: Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5
+tls:
+  addr: :8081
+  cert: /home/colin/.goserver/cert/goserver.pem
+  key: /home/colin/.goserver/cert/goserver-key.pem
+
+# MySQL 数据库相关配置
+db:
+  host: ${MARIADB_HOST} # MySQL 机器 ip 和端口，默认 127.0.0.1:3306
+  username: ${MARIADB_USERNAME} # MySQL 用户名(建议授权最小权限集)
+  password: ${MARIADB_PASSWORD} # MySQL 用户密码
+  database: ${MARIADB_DATABASE} # goserver 系统所用的数据库名
+  max-idle-connections: 100 # MySQL 最大空闲连接数，默认 100
+  max-open-connections: 100 # MySQL 最大打开的连接数，默认 100
+  max-connection-life-time: 10s # 空闲连接最大存活时间，默认 10s
+  log-level: 4 # GORM log level, 1: silent, 2:error, 3:warn, 4:info
+
+log:
+  development: true
+  name: goserver
+  disable-caller: false # 是否开启 caller，如果开启会在日志中显示调用日志所在的文件、函数和行号
+  disable-stacktrace: false # 是否再panic及以上级别禁止打印堆栈信息
+  enable-color: true # 是否开启颜色输出，true:是，false:否
+  level: debug # debug, info, warn, error, dpanic, panic, fatal
+  format: console # console, json
+  output-paths: [/tmp/goserver.log, stdout] # 多个输出，用 `逗号+空格` 分开。stdout：标准输出，
+  error-output-paths: [stderr] # zap内部(非业务)错误日志输出路径，多个输出，逗号分开

@@ -1,0 +1,15 @@
+[Unit]
+Description=IAM APIServer
+Documentation=https://github.com/marmotedu/goserver/blob/master/init/README.md
+
+[Service]
+WorkingDirectory=${GOSERVER_DATA_DIR}/goserver
+ExecStartPre=/usr/bin/mkdir -p ${GOSERVER_DATA_DIR}/goserver
+ExecStartPre=/usr/bin/mkdir -p ${GOSERVER_LOG_DIR}
+ExecStart=${IAM_INSTALL_DIR}/bin/goserver --config=${GOSERVER_CONFIG_DIR}/goserver.yaml
+Restart=always
+RestartSec=5
+StartLimitInterval=0
+
+[Install]
+WantedBy=multi-user.target
