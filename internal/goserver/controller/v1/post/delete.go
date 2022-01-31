@@ -7,7 +7,7 @@ package post
 import (
 	"github.com/gin-gonic/gin"
 
-	"github.com/marmotedu/goserver/internal/goserver/constant"
+	"github.com/marmotedu/goserver/internal/pkg/constant"
 	"github.com/marmotedu/goserver/internal/pkg/log"
 	"github.com/marmotedu/goserver/pkg/core"
 	metav1 "github.com/marmotedu/goserver/pkg/meta/v1"

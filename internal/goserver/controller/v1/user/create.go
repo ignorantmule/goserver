@@ -7,7 +7,7 @@ package user
 import (
 	"github.com/gin-gonic/gin"
 
-	// v1 "github.com/marmotedu/api/apiserver/v1".
+	"github.com/marmotedu/goserver/internal/pkg/log"
 	v1 "github.com/marmotedu/goserver/internal/pkg/model/goserver/v1"
 	"github.com/marmotedu/goserver/pkg/auth"
 	"github.com/marmotedu/goserver/pkg/core"
@@ -17,7 +17,7 @@ import (
 
 // Create add new user to the storage.
 func (u *UserController) Create(c *gin.Context) {
-	// log.L(c).Info("user create function called.")
+	log.L(c).Info("user create function called.")
 
 	var r v1.User
 

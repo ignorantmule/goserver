@@ -6,10 +6,10 @@ import (
 	ginswagger "github.com/swaggo/gin-swagger"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
 
-	"github.com/marmotedu/goserver/internal/goserver/constant"
 	"github.com/marmotedu/goserver/internal/goserver/controller/v1/post"
 	"github.com/marmotedu/goserver/internal/goserver/controller/v1/user"
 	"github.com/marmotedu/goserver/internal/goserver/store/mysql"
+	"github.com/marmotedu/goserver/internal/pkg/constant"
 	"github.com/marmotedu/goserver/internal/pkg/middleware"
 	"github.com/marmotedu/goserver/pkg/core"
 	"github.com/marmotedu/goserver/pkg/errno"

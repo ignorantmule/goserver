@@ -16,8 +16,8 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"github.com/marmotedu/goserver/internal/goserver/constant"
 	"github.com/marmotedu/goserver/internal/goserver/store/mysql"
+	"github.com/marmotedu/goserver/internal/pkg/constant"
 	"github.com/marmotedu/goserver/internal/pkg/log"
 	"github.com/marmotedu/goserver/internal/pkg/middleware"
 	"github.com/marmotedu/goserver/pkg/token"
@@ -107,7 +107,7 @@ func run() error {
 	g := gin.New()
 
 	// load routers
-	loadRouter(g, middleware.Logging(), middleware.RequestID())
+	loadRouter(g, middleware.Logging(), middleware.RequestID(), middleware.Context())
 
 	// create http server instance
 	insecureServer := &http.Server{

@@ -10,9 +10,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/willf/pad"
 
+	"github.com/marmotedu/goserver/internal/pkg/log"
 	"github.com/marmotedu/goserver/pkg/core"
 	"github.com/marmotedu/goserver/pkg/errno"
-	"github.com/marmotedu/goserver/pkg/log"
 )
 
 type bodyLogWriter struct {
@@ -75,7 +75,11 @@ func Logging() gin.HandlerFunc {
 		// get code and message
 		var response core.ErrResponse
 		if err := json.Unmarshal(blw.body.Bytes(), &response); err != nil {
-			log.Errorf(err, "response body can not unmarshal to model.Response struct, body: `%s`", blw.body.Bytes())
+			log.Errorf(
+				"response body can not unmarshal to model.Response struct, body: `%s`",
+				blw.body.Bytes(),
+				log.Err(err),
+			)
 			code = errno.InternalServerError.Code
 			message = err.Error()
 		} else {
